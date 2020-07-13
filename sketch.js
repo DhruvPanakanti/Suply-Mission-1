@@ -4,6 +4,10 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+var b1,b2,b3;
+
+
+
 
 function preload()
 {
@@ -37,7 +41,19 @@ function setup() {
 
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
- 	World.add(world, ground);
+	 World.add(world, ground);
+	
+	 var options={
+		 isStatic:true
+	 }
+	 b1=Bodies.rectangle(320,639,10,250,options);
+	World.add(world,b1);
+	
+	b2=Bodies.rectangle(490,639,10,250,options);
+	World.add(world,b2)
+
+	b3=Bodies.rectangle(400,660,170,10,options);
+	World.add(world,b3);
 
 
 	Engine.run(engine);
@@ -49,7 +65,11 @@ function draw() {
   rectMode(CENTER);
   background(0);
   packageSprite.x= packageBody.position.x 
-  packageSprite.y= packageBody.position.y 
+  packageSprite.y= packageBody.position.y
+  fill ("red")
+  rect(b1.position.x,b1.position.y,10,40); 
+  rect(b2.position.x,b2.position.y,10,40);
+  rect(b3.position.x,b3.position.y,170,10);
   drawSprites();
  
 }
